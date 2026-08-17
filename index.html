@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>【ご提案資料】クリニック向けWeb運用・業務効率化サポート</title>
+  <style>
+    /* 基本設定・カラーパレット */
+    :root {
+      --primary: #0f4c81;   /* 信頼感あふれるネイビー */
+      --secondary: #f0f7fc; /* 明るいライトブルー背景 */
+      --text-main: #1e293b; /* 視認性の高い濃いグレー */
+      --text-sub: #475569;  /* 補足テキスト用グレー */
+      --border: #cbd5e1;
+      --guarantee-bg: #f0fdf4;
+      --guarantee-border: #16a34a;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+      color: var(--text-main);
+      line-height: 1.75; /* 行間を広げて圧倒的に読みやすく */
+      font-size: 16px;   /* 基本の文字サイズを大きめに設定 */
+      background-color: #ffffff;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* セクション共通 */
+    section { padding: 48px 0; }
+    
+    .section-title {
+      text-align: center;
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: var(--primary);
+      margin-bottom: 32px;
+      letter-spacing: 0.05em;
+    }
+    .section-title::after {
+      content: "";
+      display: block;
+      width: 48px;
+      height: 3px;
+      background: var(--primary);
+      margin: 12px auto 0;
+      border-radius: 2px;
+    }
+
+    /* ヘッダー・メインビジュアル */
+    .hero {
+      background: var(--secondary);
+      padding: 60px 0 48px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .badge {
+      background: var(--primary);
+      color: #ffffff;
+      font-size: 0.9rem;
+      font-weight: bold;
+      padding: 6px 16px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 16px;
+      letter-spacing: 0.05em;
+    }
+    .hero h1 {
+      font-size: 1.85rem;
+      color: var(--primary);
+      line-height: 1.45;
+      margin-bottom: 16px;
+      font-weight: bold;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--text-sub);
+      font-weight: 500;
+    }
+
+    /* 課題整理（チェックリスト） */
+    .trouble-box {
+      background: #ffffff;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 32px;
+    }
+    .trouble-list {
+      list-style: none;
+    }
+    .trouble-list li {
+      padding: 12px 0 12px 36px;
+      position: relative;
+      border-bottom: 1px dashed var(--border);
+      font-size: 1.05rem;
+      font-weight: 500;
+    }
+    .trouble-list li:last-child { border-bottom: none; }
+    .trouble-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 6px;
+      color: var(--primary);
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    /* 4つの特長（グリッド表示） */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 28px 24px;
+      background: #ffffff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+    .card-num {
+      color: var(--primary);
+      font-weight: bold;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 12px;
+      color: var(--primary);
+      font-weight: bold;
+    }
+    .card p {
+      font-size: 0.98rem;
+      color: var(--text-sub);
+      line-height: 1.65;
+    }
+
+    /* 行政指導・修正保証バナー */
+    .guarantee-box {
+      background: var(--guarantee-bg);
+      border: 2px solid var(--guarantee-border);
+      border-radius: 10px;
+      padding: 28px 24px;
+      margin-top: 32px;
+      text-align: center;
+    }
+    .guarantee-box h4 {
+      color: #15803d;
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    .guarantee-box p {
+      font-size: 1rem;
+      color: #166534;
+      font-weight: 500;
+    }
+
+    /* プラン概要 */
+    .price-card {
+      background: #ffffff;
+      border: 2px solid var(--primary);
+      border-radius: 12px;
+      padding: 36px 28px;
+    }
+    .price-header {
+      text-align: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 24px;
+    }
+    .old-price {
+      text-decoration: line-through;
+      color: var(--text-sub);
+      font-size: 1.15rem;
+    }
+    .new-price {
+      color: var(--primary);
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-top: 4px;
+    }
+    .details-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .details-block {
+      background: var(--secondary);
+      padding: 20px 24px;
+      border-radius: 8px;
+    }
+    .details-block h5 {
+      font-size: 1.05rem;
+      color: var(--primary);
+      font-weight: bold;
+      margin-bottom: 10px;
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 4px;
+      display: inline-block;
+    }
+    .details-block ul {
+      list-style: none;
+    }
+    .details-block li {
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+      position: relative;
+      padding-left: 16px;
+    }
+    .details-block li::before {
+      content: "・";
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+    }
+
+    /* モバイル最適化 */
+    @media (max-width: 768px) {
+      body { font-size: 15px; }
+      .hero h1 { font-size: 1.45rem; }
+      .new-price { font-size: 2rem; }
+      .details-grid { grid-template-columns: 1fr; }
+      .trouble-box { padding: 20px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- メインビジュアル -->
+  <header class="hero">
+    <div class="container">
+      <span class="badge">医療機関向け 企画・ご提案資料</span>
+      <h1>地域の皆様からの信頼と<br>受付スタッフ様の業務負担軽減を両立</h1>
+      <p>【医療広告ガイドライン完全準拠】クリニックWeb運用サポート概要</p>
+    </div>
+  </header>
+
+  <!-- 現場の課題（共感） -->
+  <section>
+    <div class="container">
+      <h2 class="section-title">このような院内のお悩みはありませんか？</h2>
+      <div class="trouble-box">
+        <ul class="trouble-list">
+          <li>「休診日」や「駐車場の場所」など、Webを見ればわかる電話問合せが多く受付の手が止まる</li>
+          <li>医療広告ガイドラインの違反にならないか、Webの表現に不安がある</li>
+          <li>WEB予約システムや電話への動線が分かりづらく、患者様が迷っている様子がある</li>
+          <li>患者様が受診前にどんな情報（不安）を求めて来院されたのか、生の声を知りたい</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4つの提案軸 -->
+  <section style="background-color: var(--secondary);">
+    <div class="container">
+      <h2 class="section-title">スムーズな診療を支える4つのWeb設計</h2>
+      <div class="grid">
+        <div class="card">
+          <span class="card-num">POINT 01</span>
+          <h3>休診日・案内の目立つ配置</h3>
+          <p>休診日、代診、駐車場、初診時の持ち物など、電話でよく聞かれる質問をトップページに分かりやすく提示。受付の電話負担を軽減します。</p>
+        </div>
+        <div class="card">
+          <span class="card-num">POINT 02</span>
+          <h3>医療広告ガイドライン完全対応</h3>
+          <p>禁止表現や限定解除要件（自由診療・写真掲載時のリスク併記等）をクリアした、安心・安全な表現でサイトを制作します。</p>
+        </div>
+        <div class="card">
+          <span class="card-num">POINT 03</span>
+          <h3>既存予約システムとのスムーズ連携</h3>
+          <p>現在お使いのWEB予約システムや電話・メール問合せへ、スマホから迷わず辿り着けるスムーズな動線を設計します。</p>
+        </div>
+        <div class="card">
+          <span class="card-num">POINT 04</span>
+          <h3>現場の声を拾う患者様アンケート</h3>
+          <p>「受診前に知りたかったこと」を匿名アンケートで集計。サイト上の情報不足を補うヒアリングを実施します。</p>
+        </div>
+      </div>
+
+      <!-- 保証規定 -->
+      <div class="guarantee-box">
+        <h4>【安心のアフターフォロー保証】</h4>
+        <p>万が一、行政指導や保健所からの指摘・表現変更の依頼があった場合は、<br><strong>該当箇所の修正・テキスト変更を無償にて迅速対応</strong>いたします。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- パッケージ内容・条件 -->
+  <section>
+    <div class="container">
+      <h2 class="section-title">特別モニタープラン概要</h2>
+      <div class="price-card">
+        <div class="price-header">
+          <p class="old-price">通常想定価格 650,000円（相当）</p>
+          <p class="new-price">特別価格 250,000円 <span style="font-size:1.1rem; font-weight:normal;">(税込)</span></p>
+        </div>
+        
+        <div class="details-grid">
+          <div class="details-block">
+            <h5>パッケージに含まれる内容</h5>
+            <ul>
+              <li>HP制作（スマホ最適化・問合せ最適化）</li>
+              <li>ロゴデザイン作成</li>
+              <li>SNS案内バナー作成（2枚）</li>
+              <li>患者様アンケート集計・分析サポート</li>
+              <li>アクセス改善レポート（3ヶ月分）</li>
+            </ul>
+          </div>
+          <div class="details-block">
+            <h5>モニター協力条件</h5>
+            <ul>
+              <li>電話問合せの削減効果など、数値データの匿名公開（※クリニック名は完全伏字）</li>
+              <li>院内またはWeb上での簡易「患者様アンケート」実施へのご協力</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
